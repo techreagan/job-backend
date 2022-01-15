@@ -6,9 +6,39 @@ const { Job } = require('../models')
 // @route   GET /api/v1/jobs
 // @access  Public
 exports.getJobs = asyncHandler(async (req, res, next) => {
-	const jobs = await Job.findAll()
+	// Pagination
+	const page = parseInt(req.query.page, 10) || 1
+	const limit = parseInt(req.query.limit, 10) || 10
+	const startIndex = (page - 1) * limit
+	const endIndex = page * limit
 
-	return res.status(200).json({ success: true, data: jobs })
+	const { count, rows } = await Job.findAndCountAll({
+		limit,
+		offset: startIndex,
+	})
+
+	const totalPage = Math.ceil(count / limit)
+
+	// Pagination result
+	const pagination = {}
+
+	if (endIndex < count) {
+		pagination.next = {
+			page: page + 1,
+			limit,
+		}
+	}
+
+	if (startIndex > 0) {
+		pagination.prev = {
+			page: page - 1,
+			limit,
+		}
+	}
+
+	return res
+		.status(200)
+		.json({ success: true, data: { count, pagination, totalPage, jobs: rows } })
 })
 
 // @desc    Get single job
