@@ -1,57 +1,61 @@
-# NodeJS / ExpressJS MongoDB(Mongoose) Boilerplate
+# Jobs Board API
 
-This is my boilerplate for RESTful API with NodeJS and MongoDB.
+Job board
 
-## Boilerplate Features
-* Authentication with JWT (Reset Password with email)
-* User Create, Read, Update and Delete (CRUD) operations
-* API Security (NoSQL Injections, XSS Attacks, http param pollution etc)
+## API Documentation
+
+API documentation with examples response: [API](https://documenter.getpostman.com/view/9407876/UVXjLGKn)
 
 ## Configuration File
 
-Modify the config/.env file to your environment variables, set your JWT_SECRET and SMTP variables
+Rename .env.example to .env in the config folder - Modify the .env file to your environment variable
 
-``` ENV
+```ENV
 NODE_ENV=development
 PORT=3001
 
-MONGO_URI=YOUR_URL
-
-JWT_SECRET=YOUR_SECRET
-JWT_EXPIRE=30d
-JWT_COOKIE_EXPIRE=30
-
-SMTP_HOST=smtp.mailtrap.io
-SMTP_PORT=2525
-SMTP_EMAIL=
-SMTP_PASSWORD=
-FROM_EMAIL=noreply@boilerplate.com
-FROM_NAME=Boilerplate
+DB_USER=
+DB_PASS=
+DB_NAME=
+DB_HOST=
+DB_DIALECT=
 ```
 
 ## Installation
+
 Install all npm dependecies
-``` console
+
+```console
 npm install
 ```
 
 Install nodemon globally
-``` console
+
+```console
 npm install -g nodemon
 ```
 
-Run database seeder
-``` console
-node seeder -i
+Install sequelize cli globally
+
+```console
+npm install -g sequelize-cli
 ```
 
-Delete all data
-``` console
-node seeder -d
+Make sure you create your database, if not you can run this command to create the database
+
+```console
+sequelize db:create
 ```
 
-## Run Boilerplate
-``` console
+Run migrations to setup the database
+
+```console
+sequelize db:migrate
+```
+
+## Run App
+
+```console
 node run dev
 ```
 
