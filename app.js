@@ -16,7 +16,7 @@ const DBConnection = require('./config/db')
 
 dotenv.config({ path: './config/.env' })
 
-// const userRoutes = require('./routes/users')
+const jobRoutes = require('./routes/jobs')
 
 const app = express()
 
@@ -50,7 +50,7 @@ app.use(hpp())
 
 const versionOne = (routeName) => `/api/v1/${routeName}`
 
-// app.use(versionOne('users'), userRoutes)
+app.use(versionOne('jobs'), jobRoutes)
 
 app.use(errorHandler)
 
