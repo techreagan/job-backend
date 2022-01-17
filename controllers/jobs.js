@@ -15,6 +15,7 @@ exports.getJobs = asyncHandler(async (req, res, next) => {
 	const { count, rows } = await Job.findAndCountAll({
 		limit,
 		offset: startIndex,
+		order: [['createdAt', 'DESC']],
 	})
 
 	const totalPage = Math.ceil(count / limit)

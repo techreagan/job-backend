@@ -48,6 +48,12 @@ app.use(limiter)
 // Prevent http param pollution
 app.use(hpp())
 
+// app.use((req, res, next) => {
+// 	setTimeout(() => {
+// 		next()
+// 	}, 1000)
+// })
+
 const versionOne = (routeName) => `/api/v1/${routeName}`
 
 app.use(versionOne('jobs'), jobRoutes)

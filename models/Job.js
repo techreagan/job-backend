@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
 				validate: {
 					len: {
 						args: [5],
-						msg: 'Title must be five(5) characters long',
+						msg: 'Description must be five(5) characters long',
 					},
 				},
 			},
