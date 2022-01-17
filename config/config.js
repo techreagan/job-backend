@@ -9,7 +9,7 @@ module.exports = {
 		database: process.env.DB_NAME,
 		host: process.env.DB_HOST,
 		port: process.env.DB_PORT,
-		dialect: 'mysql',
+		dialect: process.env.DB_DIALECT,
 		dialectOptions: {
 			bigNumberStrings: true,
 		},
@@ -20,7 +20,7 @@ module.exports = {
 		database: process.env.PROD_DB_NAME,
 		host: process.env.PROD_DB_HOST,
 		port: process.env.PROD_DB_PORT,
-		dialect: 'mysql',
+		dialect: process.env.PROD_DB_DIALECT,
 		dialectOptions: {
 			bigNumberStrings: true,
 		},
